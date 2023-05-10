@@ -1,15 +1,20 @@
 package app;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import threads.MyFirstRunnable;
 import threads.MyFirstThread;
 
 public class Application {
+	public static Logger logger = LoggerFactory.getLogger(Application.class);
+
 	public static void main(String[] args) {
-		System.out.println("CIAO DAL MAIN THREAD");
-		MyFirstThread t1 = new MyFirstThread(Colors.ANSI_CYAN);
-		MyFirstThread t2 = new MyFirstThread(Colors.ANSI_GREEN);
-		MyFirstThread t3 = new MyFirstThread(Colors.ANSI_RED);
-		Thread t4 = new Thread(new MyFirstRunnable(Colors.ANSI_PURPLE, "THREAD 4"));
+		logger.info("CIAO DAL MAIN THREAD");
+		MyFirstThread t1 = new MyFirstThread();
+		MyFirstThread t2 = new MyFirstThread();
+		MyFirstThread t3 = new MyFirstThread();
+		Thread t4 = new Thread(new MyFirstRunnable());
 		// t1.run();
 		// Non bisogna utilizzare run direttamente,
 		// altrimenti l'esecuzione avviene sul Thread principale

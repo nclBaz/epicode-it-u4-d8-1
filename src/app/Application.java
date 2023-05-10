@@ -24,9 +24,23 @@ public class Application {
 		t4.setName("AJEJE");
 
 		t1.start();
-		t2.start();
+		try {
+			t1.join();
+			t2.start();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			logger.error(e.getMessage());
+		}
+		try {
+			t2.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		t3.start();
 		t4.start();
+
+		t3.interrupt();
 		// t4.start(); <-- NON ESEGUIRE DUE VOLTE LO STESSO THREAD
 
 		// **************** ESEMPIO CON ANONYMOUS CLASS *************
